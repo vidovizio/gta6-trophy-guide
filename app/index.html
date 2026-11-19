@@ -1,25 +1,79 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091116">
+  <title>LEONIDA ATLAS — Trophy Field Guide</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
-</header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+  <div class="city-glow" aria-hidden="true"></div>
+  <header class="masthead">
+    <a class="brand" href="#checklist" aria-label="Leonida Atlas home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>LEONIDA <em>ATLAS</em></strong><small>FIELD GUIDE · PS5 TROPHY DESK</small></span>
+    </a>
+    <div class="edition"><span class="live-dot"></span> OFFLINE EDITION <span class="edition-rule"></span> 55 TROPHIES</div>
+    <div class="mast-actions">
+      <button id="export" class="quiet-button" type="button" title="Download your earned trophy progress">Export ↗</button>
+      <label class="quiet-button import-button" for="import-file">Import ↙<input id="import-file" type="file" accept="application/json"></label>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="checklist">
+      <div class="hero-copy">
+        <div class="eyebrow"><span>01</span> THE TROPHY DESK</div>
+        <h1>Make your mark<br><span>across Leonida.</span></h1>
+        <p>A spoiler-aware checklist, road map, and candid field notes for the road to platinum.</p>
+      </div>
+      <div class="progress-card">
+        <div class="progress-head"><span>YOUR RUN</span><strong id="progress-label">0 <small>/ 55 earned</small></strong></div>
+        <div class="progress-track"><span id="progress-fill"></span></div>
+        <div class="grade-counts" id="grade-counts"></div>
+      </div>
+    </section>
+
+    <nav class="section-nav" aria-label="Guide sections">
+      <a class="nav-link active" href="#checklist"><span>01</span> Checklist</a>
+      <a class="nav-link" href="#roadmap"><span>02</span> Platinum route</a>
+      <div class="nav-note">YOUR PACE. YOUR SPOILERS.</div>
+    </nav>
+
+    <section class="desk-layout" aria-label="Trophy tracker">
+      <aside class="filter-rail">
+        <div class="rail-heading">FIELD FILTERS <span>⌄</span></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Find a trophy" autocomplete="off"></label>
+        <div id="kind-filters" class="filter-list" aria-label="Filter trophies by kind"></div>
+        <div class="rail-divider"></div>
+        <label class="spoiler-toggle"><input id="spoiler" type="checkbox"><span class="switch"></span><span><b>Story spoilers</b><small>Hide until earned</small></span></label>
+        <div class="source-note"><span class="note-icon">i</span><p>Methods stay within what the trophy text supports. Unverified locations and routes are called out, not guessed.</p></div>
+        <button id="roadmap-link" class="roadmap-cta" type="button">View platinum route <span>↗</span></button>
+      </aside>
+
+      <section class="trophy-column">
+        <div class="list-heading">
+          <div><div class="eyebrow">LEONIDA / PS5</div><h2>All trophies <span id="visible-count">55</span></h2></div>
+          <div id="active-filter-label" class="active-filter-label">FULL LIST <span>↘</span></div>
+        </div>
+        <div class="list-columns"><span>STATUS</span><span>TROPHY / REQUIREMENT</span><span>GRADE</span></div>
+        <div id="trophy-list" class="trophy-list" aria-live="polite"></div>
+      </section>
+
+      <aside id="detail-panel" class="detail-panel" aria-live="polite"></aside>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+      <div class="roadmap-top">
+        <div><div class="eyebrow"><span>02</span> THE LONG GAME</div><h2>Route to the <em>platinum.</em></h2></div>
+        <p>A low-backtrack order built only from the published trophy requirements. No point of no return is claimed unless a source verifies it.</p>
+      </div>
+      <div id="roadmap-stages" class="roadmap-stages"></div>
+      <div class="missable-summary"><span>MISSABLE CHECK</span><p id="missable-summary">No trophy is explicitly described as missable. The accessible source pages did not document a point of no return; check back before advancing the finale.</p></div>
+    </section>
+    <footer><span>LEONIDA ATLAS</span><span>FIELD NOTES, NOT A MAP OF THE GAME.</span><span>PROGRESS SAVES ON THIS DEVICE</span></footer>
+  </main>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
